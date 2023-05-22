@@ -60,3 +60,5 @@ switch(number) {
         console.log('Вы ввели число 2, а может 3');
         break;
 }
+
+
