@@ -146,8 +146,18 @@ console.log(arr3); // 8, 5, 2, 1, -10
 // У нас есть массив строк arr. Нужно получить отсортированную копию, но оставить arr неизменённым.
 // Создайте функцию copySorted(arr), которая будет возвращать такую копию.
 
-let arr4 = ["HTML", "JavaScript", "CSS"];
-let sorted = copySorted(arr);
-alert( sorted ); // CSS, HTML, JavaScript
-alert( arr4 ); // HTML, JavaScript, CSS (без изменений)
 
+
+let arr4 = ["HTML", "JavaScript", "CSS"];
+
+copySorted = (arr) => {
+    let res = [...arr];
+    return res.sort((a, b) => a.localeCompare(b))
+}
+
+
+console.log(copySorted(arr4)); // CSS, HTML, JavaScript
+console.log(arr4); // HTML, JavaScript, CSS (без изменений)
+
+
+// Создать расширяемый калькулятор
