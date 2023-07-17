@@ -224,12 +224,40 @@ console.log(calc.calculate("3 * 6"));
 // У вас есть массив объектов user, и в каждом из них есть user.name. Напишите код, который преобразует их в массив имён.
 
 // Например:
-let vasya = { name: "Вася", age: 25 };
-let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 28 };
-let users = [ vasya, petya, masha ];
+// let vasya = { name: "Вася", age: 25 };
+// let petya = { name: "Петя", age: 30 };
+// let masha = { name: "Маша", age: 28 };
+// let users = [ vasya, petya, masha ];
 
 let names = users.map(item => item.name);
 
 console.log( names ); // Вася, Петя, Маша
 
+// Трансформировать в объекты
+// важность: 5
+// У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
+// Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, где fullName – состоит из name и surname.
+// Например:
+
+let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+let petya = { name: "Петя", surname: "Иванов", id: 2 };
+let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+let users = [ vasya, petya, masha ];
+
+let usersMapped = users.map(item => ({
+    fullName: `${item.name} ${item.surname}`,
+    id: item.id,
+}))
+
+/*
+usersMapped = [
+  { fullName: "Вася Пупкин", id: 1 },
+  { fullName: "Петя Иванов", id: 2 },
+  { fullName: "Маша Петрова", id: 3 }
+]
+*/
+
+console.log( usersMapped[1].id ) // 1
+console.log( usersMapped[1].fullName ) // Вася Пупкин
+// Итак, на самом деле вам нужно трансформировать один массив объектов в другой. Попробуйте использовать =>. Это небольшая уловка.
