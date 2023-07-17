@@ -161,3 +161,75 @@ console.log(arr4); // HTML, JavaScript, CSS (без изменений)
 
 
 // Создать расширяемый калькулятор
+
+// важность: 5
+// Создайте функцию конструктор Calculator, которая создаёт «расширяемые» объекты калькулятора.
+// Задание состоит из двух частей.
+// Во-первых, реализуйте метод calculate(str), который принимает строку типа "1 + 2" в формате «ЧИСЛО оператор ЧИСЛО» (разделено пробелами) и возвращает результат. Метод должен понимать плюс + и минус -.
+// Пример использования:
+
+// let calc = new Calculator;
+
+// alert( calc.calculate("3 + 7") ); // 10
+// Затем добавьте метод addMethod(name, func), который добавляет в калькулятор новые операции. Он принимает оператор name и функцию с двумя аргументами func(a,b), которая описывает его.
+
+// Например, давайте добавим умножение *, деление / и возведение в степень **:
+
+// let powerCalc = new Calculator;
+// powerCalc.addMethod("*", (a, b) => a * b);
+// powerCalc.addMethod("/", (a, b) => a / b);
+// powerCalc.addMethod("**", (a, b) => a ** b);
+
+// let result = powerCalc.calculate("2 ** 3");
+// alert( result ); // 8
+// Для этой задачи не нужны скобки или сложные выражения.
+// Числа и оператор разделены ровно одним пробелом.
+// Не лишним будет добавить обработку ошибок.
+
+function Calculator() {
+
+    this.objCalc = {
+        "+": (a, b) => a + b,
+        "-": (a, b) => a - b,
+
+    };
+
+    this.calculate = function (str) {
+        let split = str.split(" ");
+        // console.log(split)
+        let a = +split[0];
+        let or = split[1];
+        let b = +split[2];
+
+        return this.objCalc[or](a,b);
+    };
+
+    this.addMethod = function(name, func) {
+        this.objCalc[name] = func;
+    }
+
+}
+
+let calc = new Calculator;
+
+console.log(calc.calculate("3 + 7"));
+console.log(calc.calculate("3 - 6"));
+
+calc.addMethod("*", (a, b) => a * b);
+console.log(calc.calculate("3 * 6"));
+
+
+// Трансформировать в массив имён
+// важность: 5
+// У вас есть массив объектов user, и в каждом из них есть user.name. Напишите код, который преобразует их в массив имён.
+
+// Например:
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+let users = [ vasya, petya, masha ];
+
+let names = users.map(item => item.name);
+
+console.log( names ); // Вася, Петя, Маша
+
