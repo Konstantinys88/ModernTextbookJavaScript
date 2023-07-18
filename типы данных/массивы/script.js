@@ -201,10 +201,10 @@ function Calculator() {
         let or = split[1];
         let b = +split[2];
 
-        return this.objCalc[or](a,b);
+        return this.objCalc[or](a, b);
     };
 
-    this.addMethod = function(name, func) {
+    this.addMethod = function (name, func) {
         this.objCalc[name] = func;
     }
 
@@ -231,7 +231,7 @@ console.log(calc.calculate("3 * 6"));
 
 let names = users.map(item => item.name);
 
-console.log( names ); // Вася, Петя, Маша
+console.log(names); // Вася, Петя, Маша
 
 // Трансформировать в объекты
 // важность: 5
@@ -239,11 +239,11 @@ console.log( names ); // Вася, Петя, Маша
 // Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, где fullName – состоит из name и surname.
 // Например:
 
-let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
-let petya = { name: "Петя", surname: "Иванов", id: 2 };
-let masha = { name: "Маша", surname: "Петрова", id: 3 };
+// let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+// let petya = { name: "Петя", surname: "Иванов", id: 2 };
+// let masha = { name: "Маша", surname: "Петрова", id: 3 };
 
-let users = [ vasya, petya, masha ];
+let users = [vasya, petya, masha];
 
 let usersMapped = users.map(item => ({
     fullName: `${item.name} ${item.surname}`,
@@ -258,6 +258,65 @@ usersMapped = [
 ]
 */
 
-console.log( usersMapped[1].id ) // 1
-console.log( usersMapped[1].fullName ) // Вася Пупкин
+console.log(usersMapped[1].id) // 1
+console.log(usersMapped[1].fullName) // Вася Пупкин
 // Итак, на самом деле вам нужно трансформировать один массив объектов в другой. Попробуйте использовать =>. Это небольшая уловка.
+
+
+// Отсортировать пользователей по возрасту
+// важность: 5
+// Напишите функцию sortByAge(users), которая принимает массив объектов со свойством age и сортирует их по нему.
+// Например:
+
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+
+let arr5 = [vasya, petya, masha];
+
+console.log(arr5);
+
+function sortByAge(arr) {
+    return arr.sort((a, b) => a.age > b.age ? 1 : -1);
+}
+
+sortByAge(arr5);
+
+console.log(arr5);
+
+// теперь: [vasya, masha, petya]
+
+// Оставить уникальные элементы массива
+// важность: 4
+// Пусть arr – массив строк.
+
+// Напишите функцию unique(arr), которая возвращает массив, содержащий только уникальные элементы arr.
+
+// Например:
+
+// function unique(arr) {
+//     let res = [];
+//     arr.forEach(item => {
+//         if (!res.includes(item)) {
+//             res.push(item);
+//         }
+//     })
+//     return res;
+// }
+
+function unique(arr) {
+    let res = [];
+    arr.map(item => {
+        if (!res.includes(item)) {
+            res.push(item);
+        }
+    })
+    return res;
+}
+
+let strings = ["кришна", "кришна", "харе", "харе",
+    "харе", "харе", "кришна", "кришна", ":-O"
+];
+
+console.log(strings); 
+console.log(unique(strings)); // кришна, харе, :-O
