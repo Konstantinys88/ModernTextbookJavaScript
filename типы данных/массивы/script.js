@@ -318,5 +318,5 @@ let strings = ["кришна", "кришна", "харе", "харе",
     "харе", "харе", "кришна", "кришна", ":-O"
 ];
 
-console.log(strings); 
+console.log(strings);
 console.log(unique(strings)); // кришна, харе, :-O
