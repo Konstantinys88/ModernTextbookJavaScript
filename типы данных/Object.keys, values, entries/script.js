@@ -16,7 +16,6 @@ function sumSalaries(obj) {
     for (let value of Object.values(obj)) {
         res += value;
     }
-
     return res;
 }
 
